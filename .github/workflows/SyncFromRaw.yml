@@ -44,5 +44,3 @@ jobs:
           git merge local_upstream
           git status
           git push
-        #   git commit -m 'Actions auto update' || echo "nothing to commit"
-        #   git push -f origin ${SUBMMIT_BRANCH}
