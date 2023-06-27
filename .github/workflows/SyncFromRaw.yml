@@ -31,7 +31,7 @@ jobs:
       - name: Sync from raw repo
         run: |
           git clone $REPO_SSH
-          cd black
+          cd autoflake
           git config pull.rebase true
           git remote add upstream git@github.com:PyCQA/autoflake.git
           git fetch upstream main
