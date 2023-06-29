@@ -5,7 +5,7 @@ on:
     branches:
       - '**'
   schedule:
-    - cron: '0 1 * * *'  # 9点运行 1 + 8
+    - cron: '0 0 * * *'  # 9点运行 1 + 8
 
   workflow_dispatch:  # click the button on Github repo!
 
@@ -30,16 +30,16 @@ jobs:
         upstream_sync_branch: main
         upstream_sync_repo: PyCQA/autoflake
 
-        test_mode: true
-      
+        test_mode: false
+
     - name: New commits found
       if: steps.sync.outputs.has_new_commits == 'true'
       run: echo "New commits were found to sync."
-    
+
     - name: No new commits
       if: steps.sync.outputs.has_new_commits == 'false'
       run: echo "There were no new commits."
-      
+
     - name: Show value of 'has_new_commits'
       run: echo ${{ steps.sync.outputs.has_new_commits }}
 
