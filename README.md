@@ -127,6 +127,11 @@ options:
   -s, --stdout          print changed text to stdout. defaults to true when formatting stdin, or to false otherwise
 ```
 
+To ignore the file, you can also add a comment to the top of the file:
+```python
+# autoflake: skip_file
+import os
+```
 
 ## Configuration
 
@@ -201,7 +206,7 @@ Add the following to your `.pre-commit-config.yaml`
 
 ```yaml
 -   repo: https://github.com/PyCQA/autoflake
-    rev: v2.2.1
+    rev: v2.3.0
     hooks:
     -   id: autoflake
 ```
