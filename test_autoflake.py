@@ -33,7 +33,6 @@ AUTOFLAKE_COMMAND = [
 
 
 class UnitTests(unittest.TestCase):
-
     """Unit tests."""
 
     def test_imports(self) -> None:
@@ -2005,7 +2004,6 @@ def func11() -> None:
 
 
 class SystemTests(unittest.TestCase):
-
     """System tests."""
 
     def test_skip_file(self) -> None:
@@ -3611,7 +3609,6 @@ def temporary_directory(directory: str = ".", prefix: str = "tmp.") -> Iterator[
 
 
 class StubFile:
-
     """Fake file that ignores everything."""
 
     def write(*_: Any) -> None:

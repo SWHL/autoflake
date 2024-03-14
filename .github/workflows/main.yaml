@@ -26,7 +26,7 @@ jobs:
     name: tests
     runs-on: ${{ matrix.os }}-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.2
 
       - uses: actions/setup-python@v5.0.0
         with:
@@ -43,31 +43,23 @@ jobs:
     name: pre-commit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.2
 
       - uses: actions/setup-python@v5.0.0
         with:
           python-version: 3.x
 
-      - name: install pre-commit
-        run: pip install pre-commit
-
       - name: install package
         run: pip install . tomli
 
-      - name: pre-commit cache
-        uses: actions/cache@v4.0.1
-        with:
-          path: ~/.cache/pre-commit
-          key: "${{ hashFiles('.pre-commit-config.yaml') }}"
-
-      - run: pre-commit run --all-files --show-diff-on-failure
+      - name: run pre-commit
+        uses: pre-commit/action@v3.0.1
 
   fuzz:
     name: fuzz
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.2
 
       - uses: actions/setup-python@v5.0.0
         with:

@@ -50,7 +50,7 @@ import pyflakes.messages
 import pyflakes.reporter
 
 
-__version__ = "2.3.0"
+__version__ = "2.3.1"
 
 
 _LOGGER = logging.getLogger("autoflake")
@@ -575,7 +575,8 @@ def filter_code(
     undefined_names: list[str] = []
     if expand_star_imports and not (
         # See explanations in #18.
-        re.search(r"\b__all__\b", source) or re.search(r"\bdel\b", source)
+        re.search(r"\b__all__\b", source)
+        or re.search(r"\bdel\b", source)
     ):
         marked_star_import_line_numbers = frozenset(
             star_import_used_line_numbers(messages),
@@ -1208,7 +1209,7 @@ def process_config_file(config_file_path: str) -> MutableMapping[str, Any] | Non
     import configparser
 
     reader = configparser.ConfigParser()
-    reader.read(config_file_path)
+    reader.read(config_file_path, encoding="utf-8")
     if not reader.has_section("autoflake"):
         return None
 
@@ -1514,9 +1515,8 @@ def _main(
     if not success:
         return 1
 
-    if (
-        args["remove_rhs_for_unused_variables"]
-        and not (args["remove_unused_variables"])
+    if args["remove_rhs_for_unused_variables"] and not (
+        args["remove_unused_variables"]
     ):
         _LOGGER.error(
             "Using --remove-rhs-for-unused-variables only makes sense when "
