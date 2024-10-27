@@ -26,9 +26,9 @@ jobs:
     name: tests
     runs-on: ${{ matrix.os }}-latest
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
 
-      - uses: actions/setup-python@v5.2.0
+      - uses: actions/setup-python@v5.3.0
         with:
           python-version: ${{ matrix.python-version }}
 
@@ -43,9 +43,9 @@ jobs:
     name: pre-commit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
 
-      - uses: actions/setup-python@v5.2.0
+      - uses: actions/setup-python@v5.3.0
         with:
           python-version: 3.x
 
@@ -59,9 +59,9 @@ jobs:
     name: fuzz
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4.2.2
 
-      - uses: actions/setup-python@v5.2.0
+      - uses: actions/setup-python@v5.3.0
         with:
           python-version: 3.x
 
